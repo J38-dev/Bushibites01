@@ -94,7 +94,7 @@ body {
 
   position: relative;
 
-  background: url("https://ibb.co/yFZwm5HV") center/cover no-repeat;
+  background: src("images (1).jpeg") center/cover no-repeat;
 }
 
 .hero::before {
