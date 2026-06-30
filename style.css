@@ -94,7 +94,7 @@ body {
 
   position: relative;
 
-  background: src("images (1).jpeg") center/cover no-repeat;
+  background: url("images (1).jpeg") center/cover no-repeat;
 }
 
 .hero::before {
