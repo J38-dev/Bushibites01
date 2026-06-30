@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bushi Bites</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="logo">Bushi Bites</div>
+  <button class="trolley-btn" onclick="toggleTrolley()">
+    Trolley (<span id="cart-count">0</span>)
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Bushi <br> Bites</h1>
+    <p>Meat is meat, what you gonna eat?</p>
+    <button class="primary-btn" onclick="scrollToProducts()">Order Soma</button>
+  </div>
+</header>
+
+<!-- PRODUCTS -->
+<section id="products" class="products">
+  <h2>Biltong Menu</h2>
+
+  <div class="grid">
+
+    <!-- CARD 1 -->
+    <div class="card">
+      <img src="https://ibb.co/yFZwm5HV">
+      <div class="card-body">
+        <h3>Pepper Patrol</h3>
+        <p>Fresh sea salt mixed with fine spices, classic taste.</p>
+
+        <div class="price-row">
+          <select id="price-1">
+            <option value="30">R30 Pack</option>
+            <option value="50">R50 Pack</option>
+          </select>
+        </div>
+
+        <div class="qty">
+          <button onclick="changeQty(1,-1)">−</button>
+          <span id="qty-1">1</span>
+          <button onclick="changeQty(1,1)">+</button>
+        </div>
+
+        <button class="add-btn" onclick="addToCart(1,'Pepper Patrol')">
+          Add to Trolley
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1604908554027-7b3b3c1c9d8a">
+      <div class="card-body">
+        <h3>Heatblast</h3>
+        <p>This one is strong, don't mess. Eat responsibly</p>
+
+        <select id="price-2">
+          <option value="30">R30 Pack</option>
+          <option value="50">R50 Pack</option>
+        </select>
+
+        <div class="qty">
+          <button onclick="changeQty(2,-1)">−</button>
+          <span id="qty-2">1</span>
+          <button onclick="changeQty(2,1)">+</button>
+        </div>
+
+        <button class="add-btn" onclick="addToCart(2,'Heatblast')">
+          Add to Trolley
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1604908812842-4d7f3c1d9c11">
+      <div class="card-body">
+        <h3>Babalas</h3>
+        <p>Vang this one, you will wuis me again.</p>
+
+        <select id="price-3">
+          <option value="30">R30 Pack</option>
+          <option value="50">R50 Pack</option>
+        </select>
+
+        <div class="qty">
+          <button   onclick="changeQty(3,-1)">−</button>
+          <span id="qty-3">1</span>
+          <button onclick="changeQty(3,1)">+</button>
+        </div>
+
+        <button class="add-btn" onclick="addToCart(3,'Babalas')">
+          Add to Trolley
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<!-- INFO SECTION -->
+<section class="info-section">
+
+<div class="info-card about-card">
+    <div class="info-icon">👨🏻‍🦯</div>
+    <div class="info-content">
+        <h2>About Bushi Bites</h2>
+        <p>
+            We craft premium street-style biltong using carefully selected cuts,
+            bold flavours and luxury quality. Every pack is prepared with
+            attention to detail for an unforgettable taste.
+        </p>
+    </div>
+</div>
+
+<div class="info-card delivery-card">
+    <div class="info-icon">🚚</div>
+    <div class="info-content">
+        <h2>Fast Delivery</h2>
+        <p>
+            Nationwide shipping across South Africa with secure packaging and
+            estimated delivery in 2–4 business days.
+        </p>
+    </div>
+</div>
+
+<div class="info-card payment-card">
+    <div class="info-icon">💳</div>
+    <div class="info-content">
+        <h2>Secure Payments</h2>
+        <p>
+            Checkout safely using PayFast Demo or EFT. Every transaction is
+            processed securely with instant order confirmation.
+        </p>
+    </div>
+</div>
+
+</section>
+
+<!-- TROLLEY DRAWER -->
+<!-- TROLLEY -->
+<div id="trolley" class="trolley">
+  <div class="trolley-header">
+    <h2>Your Trolley</h2>
+    <button onclick="toggleTrolley()">✕</button>
+  </div>
+
+  <div id="cart-items"></div>
+
+  <div class="trolley-footer">
+    <h3>Total: R<span id="total">0</span></h3>
+    <button class="checkout-btn" onclick="openCheckout()">
+      Checkout
+    </button>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div id="checkout" class="modal">
+  <div class="modal-box">
+
+    <h2>Secure Checkout</h2>
+
+    <button class="payfast">PayFast (Demo)</button>
+
+    <div class="eft">
+      <p>Bank: Demo Bank</p>
+      <p>Account: 123 456 789</p>
+      <p>Reference: <span id="ref"></span></p>
+    </div>
+
+    <button onclick="completeOrder()">
+      Confirm Payment
+    </button>
+
+  </div>
+</div>
+
+    
+<!-- RECEIPT -->
+<div id="receipt" class="modal">
+  <div class="modal-box">
+    <div id="receipt-content"></div>
+    <button onclick="window.print()">Download Receipt</button>
+  </div>
+</div>
+
+<footer class="footer">
+    <p>© 2026 Bushi Bites • Premium South African Biltong</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
